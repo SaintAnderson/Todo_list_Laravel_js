@@ -21,6 +21,10 @@ Route::get('/', function () {
 Route::get('/list', [ListContoller::class, 'index']);
 Route::post('/list', [ListContoller::class, 'store']);
 
+Route::get('/task/{id}', [\App\Http\Controllers\TaskController::class, 'show']);
+Route::post('/task', [\App\Http\Controllers\TaskController::class, 'store']);
+Route::delete('/task/{task}', [\App\Http\Controllers\TaskController::class, 'destroy']);
+
 Route::get('/dashboard', function () {
     return view('todo');
 })->middleware(['auth', 'verified'])->name('dashboard');
